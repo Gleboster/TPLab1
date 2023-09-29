@@ -1,11 +1,17 @@
 project(Google_tests)
 add_subdirectory(lib)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-# adding the Google_Tests_run target
 add_executable(Google_Tests_run QueueTest.cpp)
 
-# linking Google_Tests_run with DateConverter_lib which will be tested
+include_directories(${CMAKE_SOURCE_DIR}/../Containers_lib/Collections)
+include_directories(Containers_lib/Container_of_containers)
+
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
 target_link_libraries(Google_Tests_run Containers_lib)
 
 target_link_libraries(Google_Tests_run gtest gtest_main)
+
+
+
+
+

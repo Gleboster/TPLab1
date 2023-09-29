@@ -1,7 +1,7 @@
 project(Containers_lib)
 
 set(HEADER_FILES
-        "ContainerOfContainers/Queue.h"
+        Container_of_containers/Queue.h
         Collections/Collection.h
         Collections/Deque.h
         Collections/List.h
@@ -15,4 +15,4 @@ set(SOURCE_FILES
         Collections/Stack.cpp
 )
 
-add_library(DateConverter_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
+add_library(Containers_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

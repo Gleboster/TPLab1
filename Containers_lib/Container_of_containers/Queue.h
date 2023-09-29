@@ -5,10 +5,12 @@
 template<typename T>
 class Queue {
 public:
-    Queue(T *elements, int countElements) {
+    Queue(T *elements, int countElements) : Queue() {
         for (int i = 0; i < countElements; i++)
             Enqueue(elements[i]);
-    };
+    }
+
+    Queue() : count(0), trail(nullptr), head(nullptr){};
 
     ~Queue() {
         while (!IsEmpty())
@@ -88,10 +90,10 @@ private:
 
 public:
     Iterator begin() {
-        return Iterator(trail);
+        return Iterator(head);
     }
 
     Iterator end() {
-        return Iterator(head);
+        return Iterator(nullptr);
     }
 };
