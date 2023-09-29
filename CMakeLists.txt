@@ -3,14 +3,13 @@ project(Lab1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Lab1 main.cpp
-        Collections/Collection.cpp
-        Collections/Collection.h
-        Collections/Stack.cpp
-        Collections/Stack.h
-        Collections/Deque.cpp
-        Collections/Deque.h
-        Collections/List.cpp
-        Collections/List.h
-        "Container of Containers/Queue.h"
-)
+set(SOURCE_FILES main.cpp)
+add_executable(Lab1 ${SOURCE_FILES})
+
+include_directories(Containers_lib)
+add_subdirectory(Containers_lib)
+
+target_link_libraries(Lab1 Containers_lib)
+
+add_subdirectory(Google_tests)
+
