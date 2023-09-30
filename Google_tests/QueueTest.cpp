@@ -102,7 +102,7 @@ TEST(QueueSuite, IsEmpty) {
     EXPECT_TRUE(queue.IsEmpty());
 }
 
-TEST(QueueSuite, DequeueEmptyQueue) {
+TEST(QueueException, DequeueEmptyQueue) {
     Queue<int> queue;
 
     try {

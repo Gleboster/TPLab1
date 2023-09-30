@@ -6,7 +6,7 @@
 
 
 class Stack : public Collection {
-    Queue<int> data;
+    Queue<int>* data;
 
 public:
     Stack();
@@ -15,9 +15,11 @@ public:
 
     Stack(const Stack &other);
 
+    ~Stack();
+
     void Push(int value);
 
-    void Pop();
+    int Pop();
 
     int Pick() const;
 
@@ -25,6 +27,9 @@ public:
 
     int Size() const;
 
+    Queue<int>::Iterator begin() const;
+
+    Queue<int>::Iterator end() const;
 };
 
 

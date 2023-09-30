@@ -12,7 +12,7 @@ public:
             Enqueue(elements[i]);
     }
 
-    Queue(const Queue &other) {
+    Queue(const Queue &other) : Queue() {
         for (const auto &element: other) {
             Enqueue(element);
         }
@@ -47,19 +47,19 @@ public:
         return value;
     }
 
-    T Head() {
+    T Head() const {
         return trail == nullptr ? T() : head->value;
     }
 
-    T Trail() {
+    T Trail() const {
         return trail == nullptr ? T() : trail->value;
     }
 
-    int Size() {
+    int Size() const {
         return count;
     }
 
-    bool IsEmpty() {
+    bool IsEmpty() const {
         return count == 0;
     }
 
@@ -79,7 +79,8 @@ private:
         Element *prev;
     };
 
-    class Iterator {
+public:
+    class Iterator{
     public:
         Iterator(Element *current) {
             this->current = current;
@@ -106,12 +107,11 @@ private:
     Element *head;
     Element *trail;
 
-public:
-    Iterator begin() {
+    Iterator begin() const {
         return Iterator(head);
     }
 
-    Iterator end() {
+    Iterator end() const {
         return Iterator(nullptr);
     }
 };

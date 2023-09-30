@@ -4,6 +4,6 @@
 
 #include "Collection.h"
 
-bool Collection::IsEmpty() {
+bool Collection::IsEmpty() const {
     return Size() == 0;
 }

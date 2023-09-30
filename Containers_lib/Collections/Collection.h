@@ -8,8 +8,8 @@
 
 class Collection {
 public:
-    virtual int Size() = 0;
-    virtual bool IsEmpty();
+    virtual int Size() const = 0;
+    virtual bool IsEmpty() const;
 };
 
 
