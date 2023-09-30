@@ -9,6 +9,7 @@ TEST(QueueSuite, EnqueueAndDequeue) {
     for (const auto &item: elements) {
         queue.Enqueue(item);
     }
+    EXPECT_EQ(queue.Size(), countElements);
 
     // Check elements after enqueue
     for (int i = 0; i < countElements; ++i) {
@@ -35,6 +36,27 @@ TEST(QueueSuite, QueueFromArray) {
     auto it2 = queue2.begin();
     for (; it1 != queue1.end() && it2 != queue2.end(); ++it1, ++it2) {
         EXPECT_EQ(*it1, *it2);
+    }
+}
+
+TEST(QueueSuite, HeadTrail) {
+    int elements[] = {1, 2, 3, 4, 5};
+    int countElements = sizeof(elements) / sizeof(elements[0]);
+
+    Queue<int> queue;
+    EXPECT_EQ(queue.Trail(), int());
+    EXPECT_EQ(queue.Head(), int());
+
+    for (int i = 0; i < countElements; ++i) {
+        queue.Enqueue(elements[i]);
+        EXPECT_EQ(queue.Trail(), elements[i]);
+        EXPECT_EQ(queue.Head(), elements[0]);
+    }
+
+    for (int i = 0; i < countElements; ++i) {
+        EXPECT_EQ(queue.Trail(), elements[countElements - 1]);
+        EXPECT_EQ(queue.Head(), elements[i]);
+        int element = queue.Dequeue();
     }
 }
 

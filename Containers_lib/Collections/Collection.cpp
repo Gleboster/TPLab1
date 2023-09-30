@@ -3,3 +3,7 @@
 //
 
 #include "Collection.h"
+
+bool Collection::IsEmpty() {
+    return Size() == 0;
+}

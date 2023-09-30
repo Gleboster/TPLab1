@@ -7,7 +7,9 @@
 
 
 class Collection {
-
+public:
+    virtual int Size() = 0;
+    virtual bool IsEmpty();
 };
 
 

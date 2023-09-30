@@ -5,12 +5,18 @@
 template<typename T>
 class Queue {
 public:
+    Queue() : count(0), trail(nullptr), head(nullptr) {};
+
     Queue(T *elements, int countElements) : Queue() {
         for (int i = 0; i < countElements; i++)
             Enqueue(elements[i]);
     }
 
-    Queue() : count(0), trail(nullptr), head(nullptr){};
+    Queue(const Queue &other) {
+        for (const auto &element: other) {
+            Enqueue(element);
+        }
+    }
 
     ~Queue() {
         while (!IsEmpty())
@@ -39,6 +45,18 @@ public:
         head = next;
         count--;
         return value;
+    }
+
+    T Head() {
+        return trail == nullptr ? T() : head->value;
+    }
+
+    T Trail() {
+        return trail == nullptr ? T() : trail->value;
+    }
+
+    int Size() {
+        return count;
     }
 
     bool IsEmpty() {
