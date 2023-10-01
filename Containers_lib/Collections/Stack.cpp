@@ -1,4 +1,5 @@
 #include "Stack.h"
+#include "Container_of_containers/Queue.h"
 
 Stack::Stack() : data(new Queue<int>()) {}
 
