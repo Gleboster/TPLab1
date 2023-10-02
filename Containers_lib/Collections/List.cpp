@@ -10,9 +10,7 @@ List::List(int *elements, int countElements) : List() {
 }
 
 List::List(const List &other) : List() {
-    for (const auto &item: other) {
-        Append(item);
-    }
+    data = new Queue(*other.data);
 }
 
 void List::SetElement(int index, int value) {

@@ -22,8 +22,8 @@ void Stack::Push(int value) {
 
     newData.Enqueue(value);
 
-    for (const auto &oldvalues: *data) {
-        newData.Enqueue(oldvalues);
+    while (!data->IsEmpty()) {
+        newData.Enqueue(data->Dequeue());
     }
     delete data;
 
@@ -37,7 +37,7 @@ int Stack::Pop() {
     return data->Dequeue();
 }
 
-int Stack::Pick() const {
+int Stack::Peek() const {
     if (Size() == 0) {
         throw std::out_of_range("Stack is empty");
     }

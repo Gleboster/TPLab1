@@ -21,7 +21,7 @@ public:
 
     int Pop();
 
-    int Pick() const;
+    int Peek() const;
 
     bool IsEmpty() const;
 

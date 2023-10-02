@@ -8,7 +8,7 @@ TEST(StackSuite, PushPickPop){
     Stack stack;
     for (int i = 0; i < countElements; ++i) {
         stack.Push(elements[i]);
-        EXPECT_EQ(stack.Pick(), elements[i]);
+        EXPECT_EQ(stack.Peek(), elements[i]);
     }
 
     EXPECT_EQ(stack.Size(), countElements);
@@ -33,6 +33,7 @@ TEST(StackSuite, Iterator){
 
     for (const auto &item: stackI) {
         int popped = stackP.Pop();
+        std::cout << popped << " ";
         EXPECT_EQ(popped, item);
     }
 
@@ -91,7 +92,7 @@ TEST(StackException, PopOnEmptyStack) {
 TEST(StackException, PickOnEmptyStack) {
     Stack stack;
     try {
-        stack.Pick();
+        stack.Peek();
         FAIL() << "Expected std::out_of_range exception, but no exception was thrown.";
     } catch (const std::out_of_range& e) {
         EXPECT_STREQ("Stack is empty", e.what());

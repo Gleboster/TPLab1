@@ -44,6 +44,8 @@ public:
         delete head;
         head = next;
         count--;
+        if(count == 0)
+            trail = nullptr;
         return value;
     }
 
