@@ -46,7 +46,8 @@ int Deque::RemoveRear() {
 
     Queue<int> newData;
 
-    for(int i = 0; i < data->Size(); i++)
+    int startSize = data->Size();
+    for(int i = 0; i < startSize - 1; i++)
         newData.Enqueue(data->Dequeue());
 
     int lastElement = data->Dequeue();

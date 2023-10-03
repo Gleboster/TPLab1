@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Collections/Deque.h"
 
-TEST(DequeSuiteSuite, AddFrontAndRemoveFront) {
+TEST(DequeSuite, AddFrontAndRemoveFront) {
     Deque deque;
 
     deque.AddFront(10);
@@ -128,6 +128,20 @@ TEST(DequeSuite, CreateDequeFromArray) {
     }
 }
 
+TEST(DequeSuite, AddRearRemoveRear){
+    int* el = new int[]{7 , 8, 9};
+    int count = 3;
+    Deque *deque = new Deque(el, count); // Create a new deque
 
+    EXPECT_EQ(deque->Size(), count);
+
+    deque->AddRear(3);
+
+    EXPECT_EQ(deque->Size(), count + 1);
+
+    deque->RemoveRear();
+
+    EXPECT_EQ(deque->Size(), count);
+}
 
 

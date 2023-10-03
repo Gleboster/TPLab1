@@ -6,7 +6,7 @@
 #define LAB1_LIST_H
 
 
-class List : Collection {
+class List : public Collection {
     Queue<int> *data;
 public:
 

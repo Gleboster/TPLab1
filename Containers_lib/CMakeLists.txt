@@ -6,6 +6,9 @@ set(HEADER_FILES
         Collections/Deque.h
         Collections/List.h
         Collections/Stack.h
+
+        Serialization/Serializator.h
+        Serialization/Deserializator.h
 )
 
 set(SOURCE_FILES
@@ -13,6 +16,9 @@ set(SOURCE_FILES
         Collections/Deque.cpp
         Collections/List.cpp
         Collections/Stack.cpp
+
+        Serialization/Serializator.cpp
+        Serialization/Deserializator.cpp
 )
 
 add_library(Containers_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
