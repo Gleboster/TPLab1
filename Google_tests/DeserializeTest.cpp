@@ -3,11 +3,9 @@
 
 TEST(DeserializationTest, DeserializeStack) {
     Deserializator deserializator;
-    std::string serializedString = "S 1 2 3";
+    std::string serializedString = "1 2 3";
 
-    Stack *stack = new Stack();
-    // Create a new stack
-    deserializator.Deserialize(serializedString, reinterpret_cast<Collection *&>(stack));
+    Stack *stack = deserializator.DeserializeAsStack(serializedString);
 
 // Check elements using iterators
     auto it = stack->begin();
@@ -23,10 +21,9 @@ TEST(DeserializationTest, DeserializeStack) {
 
 TEST(DeserializationTest, DeserializeList) {
     Deserializator deserializator;
-    std::string serializedString = "L 4 5 6";
+    std::string serializedString = "4 5 6";
 
-    List *list = new List(); // Create a new list
-    deserializator.Deserialize(serializedString, reinterpret_cast<Collection *&>(list));
+    List *list = deserializator.DeserializeAsList(serializedString);
 
 // Check elements using iterators
     auto it = list->begin();
@@ -42,29 +39,9 @@ TEST(DeserializationTest, DeserializeList) {
 
 TEST(DeserializationTest, DeserializeDeque) {
     Deserializator deserializator;
-    std::string serializedString = "D 7 8 9";
+    std::string serializedString = "7 8 9";
 
-    Deque *deque = new Deque(); // Create a new deque
-    deserializator.Deserialize(serializedString, reinterpret_cast<Collection *&>(deque));
-
-// Check elements using iterators
-    auto it = deque->begin();
-    EXPECT_EQ(*it, 7);
-    ++it;
-    EXPECT_EQ(*it, 8);
-    ++it;
-    EXPECT_EQ(*it, 9);
-    ++it;
-
-    delete deque;
-}
-
-TEST(DeserializationTest, DeserializeDequeAsList) {
-    Deserializator deserializator;
-    std::string serializedString = "L 7 8 9";
-
-    Deque *deque = new Deque(); // Create a new deque
-    deserializator.Deserialize(serializedString, reinterpret_cast<Collection *&>(deque));
+    Deque* deque = deserializator.DeserializeAsDeque(serializedString);
 
 // Check elements using iterators
     auto it = deque->begin();

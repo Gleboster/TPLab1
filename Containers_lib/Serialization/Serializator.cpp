@@ -7,7 +7,7 @@ std::string Serializator::Serialize(Stack &stack) const {
     int* array = Reverse(GetArray(stack), stack.Size());
 
     std::stringstream ss;
-    ss << SerializeType(stack) << " " << Serialize(array, stack.Size());
+    ss << Serialize(array, stack.Size());
     return ss.str();
 }
 
@@ -15,7 +15,7 @@ std::string Serializator::Serialize(List &list) const {
     int* array = GetArray(list);
 
     std::stringstream ss;
-    ss << SerializeType(list) << " " << Serialize(array, list.Size());
+    ss << Serialize(array, list.Size());
     return ss.str();
 }
 
@@ -23,7 +23,7 @@ std::string Serializator::Serialize(Deque &deque) const {
     int* array = GetArray(deque);
 
     std::stringstream ss;
-    ss << SerializeType(deque) << " " << Serialize(array, deque.Size());
+    ss << Serialize(array, deque.Size());
     return ss.str();
 }
 
@@ -79,4 +79,5 @@ std::string Serializator::SerializeType(Collection &collection) const {
 
     return result;
 }
+
 

@@ -1,23 +1,20 @@
 #include <cstring>
 #include "Deserializator.h"
 
-void Deserializator::Deserialize(const std::string &serializedString, Collection *&sourceCollection) const {
+Stack *Deserializator::DeserializeAsStack(const std::string &serializedString) const {
     std::istringstream ss(serializedString);
-    std::string className;
-    ss >> className;
-
-    delete sourceCollection;
-    if (className == "S") {
-        sourceCollection = DeserializeStack(ss);
-    } else if (className == "L") {
-        sourceCollection = DeserializeList(ss);
-    } else if (className == "D") {
-        sourceCollection = DeserializeDeque(ss);
-    } else {
-        throw std::runtime_error("Unknown collection type");
-    }
+    return DeserializeStack(ss);
 }
 
+List *Deserializator::DeserializeAsList(const std::string &serializedString) const {
+    std::istringstream ss(serializedString);
+    return DeserializeList(ss);
+}
+
+Deque *Deserializator::DeserializeAsDeque(const std::string &serializedString) const {
+    std::istringstream ss(serializedString);
+    return DeserializeDeque(ss);
+}
 
 Stack *Deserializator::DeserializeStack(std::istringstream &ss) const {
     auto array = DeserializeArray(ss);
@@ -61,6 +58,8 @@ Deserializator::DynamicIntArray Deserializator::DeserializeArray(std::istringstr
     DynamicIntArray result(resizedElements, count);
     return result;
 }
+
+
 
 
 Deserializator::DynamicIntArray::DynamicIntArray(int *data, int size) : data(data), size(size) {}

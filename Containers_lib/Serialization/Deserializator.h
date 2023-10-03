@@ -10,7 +10,9 @@
 
 class Deserializator {
 public:
-    void Deserialize(const std::string &serializedString, Collection *&sourceCollection) const;
+    Stack* DeserializeAsStack(const std::string &serializedString) const;
+    List* DeserializeAsList(const std::string &serializedString) const;
+    Deque* DeserializeAsDeque(const std::string &serializedString) const;
 
 private:
 

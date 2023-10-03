@@ -15,7 +15,7 @@ TEST(SerializationTest, StackSerialization) {
     Serializator serializator;
     std::string serializedString = serializator.Serialize(stack);
 
-    EXPECT_EQ(serializedString, "S 1 2 3 4 5");
+    EXPECT_EQ(serializedString, "1 2 3 4 5");
 }
 
 TEST(SerializationTest, ListSerialization) {
@@ -26,7 +26,7 @@ TEST(SerializationTest, ListSerialization) {
     Serializator serializator;
     std::string serializedString = serializator.Serialize(list);
 
-    EXPECT_EQ(serializedString, "L 6 7 8 9");
+    EXPECT_EQ(serializedString, "6 7 8 9");
 }
 
 TEST(SerializationTest, DequeSerialization) {
@@ -37,7 +37,7 @@ TEST(SerializationTest, DequeSerialization) {
     Serializator serializator;
     std::string serializedString = serializator.Serialize(deque);
 
-    EXPECT_EQ(serializedString, "D 10 11 12");
+    EXPECT_EQ(serializedString, "10 11 12");
 }
 
 
