@@ -4,32 +4,39 @@
 List getList(int n) {
     List *list = new List();
 
-    for (int i = 0; i < 1000; ++i) {
-        list->Append(i);
+    for (int i = 0; i < n; ++i) {
+        list->Append(i + 1);
     }
 
     return *list;
 }
 
 TEST(ListSuite, SetElement) {
-    const int num_iterations = 1000;
-    List list = getList(1000);
+    int countList = 10;
+    List list = getList(countList);
 
-    for (int i = 0; i < num_iterations; ++i) {
+    for (int i = 0; i < countList; ++i) {
         int indexToSet = i % list.Size();
         int itemToSet = 10;
 
         list.SetElement(indexToSet, itemToSet);
+        EXPECT_EQ(list.Size(), countList);
 
         EXPECT_EQ(list.GetElement(indexToSet), itemToSet);
+        EXPECT_EQ(list.Size(), countList);
     }
 }
 
 TEST(ListSuite, GetElement) {
-    List list = getList(1000);
+    int count = 100;
+    int *elements = new int[count];
+    for (int i = 0; i < count; i++){
+        elements[i] = i + 1;
+    }
+    List list(elements, count);
 
-    for (int i = 0; i < 1000; ++i) {
-        EXPECT_EQ(list.GetElement(i), i);
+    for (int i = 0; i < count; ++i) {
+        EXPECT_EQ(list.GetElement(i), elements[i]);
     }
 }
 

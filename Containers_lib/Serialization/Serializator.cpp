@@ -3,31 +3,31 @@
 
 Serializator::Serializator() {}
 
-std::string Serializator::Serialize(Stack &stack) const {
-    int* array = Reverse(GetArray(stack), stack.Size());
+
+std::string Serializator::SerializeCollection(const Collection &collection, bool reverse) const {
+    int* array = GetArray(collection);
+
+    if(reverse)
+        array = Reverse(array, collection.Size());
 
     std::stringstream ss;
-    ss << Serialize(array, stack.Size());
+    ss << Serialize(array, collection.Size());
     return ss.str();
 }
 
-std::string Serializator::Serialize(List &list) const {
-    int* array = GetArray(list);
-
-    std::stringstream ss;
-    ss << Serialize(array, list.Size());
-    return ss.str();
+std::string Serializator::Serialize(const Stack &stack) const {
+    return SerializeCollection(stack, true);
 }
 
-std::string Serializator::Serialize(Deque &deque) const {
-    int* array = GetArray(deque);
-
-    std::stringstream ss;
-    ss << Serialize(array, deque.Size());
-    return ss.str();
+std::string Serializator::Serialize(const List &list) const {
+    return SerializeCollection(list);
 }
 
-int *Serializator::GetArray(Collection &collection) const {
+std::string Serializator::Serialize(const Deque &deque) const {
+    return SerializeCollection(deque);
+}
+
+int *Serializator::GetArray(const Collection &collection) const {
     int *result = new int[collection.Size()];
     int i = 0;
     for (const auto &item: collection) {

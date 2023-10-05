@@ -24,6 +24,8 @@ public:
 
     void Insert(int index, int item);
 
+    int RemoveBy(int index);
+
     void Remove(int item);
 
     int IndexOf(int item) const;

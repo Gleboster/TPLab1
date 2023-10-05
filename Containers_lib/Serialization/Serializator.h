@@ -12,12 +12,14 @@ class Serializator {
 public:
     Serializator();
 
-    std::string Serialize(Stack &stack) const;
-    std::string Serialize(List &list) const;
-    std::string Serialize(Deque &deque) const;
+    std::string SerializeCollection(const Collection &collection, bool reverse = false) const;
+
+    std::string Serialize(const Stack &stack) const;
+    std::string Serialize(const List &list) const;
+    std::string Serialize(const Deque &deque) const;
 
 private:
-    int* GetArray(Collection &collection) const;
+    int* GetArray(const Collection &collection) const;
 
     int* Reverse(int* source, int count) const;
 

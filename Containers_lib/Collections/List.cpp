@@ -16,7 +16,7 @@ List::List(const List &other) : List() {
 void List::SetElement(int index, int value) {
     CheckIndex(index);
 
-    Remove(index);
+    RemoveBy(index);
     Insert(index, value);
 }
 
@@ -49,15 +49,21 @@ void List::Insert(int index, int item) {
     data = newData;
 }
 
+int List::RemoveBy(int index) {
+    int result = GetElement(index);
+    auto newData = CopyDataUnder(index, nullptr);
+
+    delete data;
+    data = newData;
+    return result;
+}
+
 void List::Remove(int item) {
     int index = IndexOf(item);
     if (index == -1)
         return;
 
-    auto newData = CopyDataUnder(index, nullptr);
-
-    delete data;
-    data = newData;
+    RemoveBy(index);
 }
 
 int List::IndexOf(int item) const {
@@ -122,17 +128,6 @@ List::CopyDataUnder(int indexChanging, std::function<void(Queue<int> *)> actionC
     }
 
     return copyOfData;
-
-
-/*    Queue<int> newData;
-
-    auto it = begin();
-    int i = 0;
-    for (; it != end(); ++it, i++) {
-        if (i == index)
-            continue;
-        newData.Enqueue(*it);
-    }*/
 }
 
 
